@@ -6,7 +6,6 @@ import PackedItemsContainer from "../containers/PackedItemsContainer";
 import PackedFilterContainer from '../containers/PackedFilterContainer';
 import UnPackedItemsContainer from "../containers/UnPackedItemsContainer";
 import UnPackedFilterContainer from "../containers/UnPackedFilterContainer";
-import UndoRedoContainer from "../containers/UndoRedoContainer";
 
 import "./Application.css";
 
@@ -15,7 +14,6 @@ class Application extends Component {
     return (
       <div className="Application">
         <NewItemContainer />
-        <UndoRedoContainer />
         <CountDown />
         <UnPackedItemsContainer
           title="Unpacked Items"

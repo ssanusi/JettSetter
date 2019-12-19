@@ -5,7 +5,6 @@ import './NewItem.css';
 class NewItem extends Component {
 
   handleChange = event => {
-    console.log(this.props)
     const { target:{ value } } = event;
     this.props.updateNewItemValue(value)
   };
@@ -16,8 +15,6 @@ class NewItem extends Component {
     event.preventDefault();
 
     this.props.addItem(value);
-
-
   };
 
   render() {

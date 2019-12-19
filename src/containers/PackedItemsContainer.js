@@ -4,15 +4,15 @@ import { toggleItem, removeItem } from "../store/Actions/itemsActions";
 
 const mapStateToProps = ({ items, filter }) => {
   return {
-    items: items.present.filter(
+    items: items.filter(
       item => item.packed && item.value.includes(filter.packedItemsFilter)
     )
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  onCheckOff(id) {
-    dispatch(toggleItem(id));
+  onCheckOff(item) {
+    dispatch(toggleItem(item));
   },
   onRemove(id) {
     dispatch(removeItem(id));

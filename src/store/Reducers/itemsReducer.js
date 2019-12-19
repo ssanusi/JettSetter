@@ -3,67 +3,35 @@ import {
   REMOVE_ITEM,
   TOGGLE_ITEM,
   MARK_ALL_AS_UNPACKED,
-  UNDO_ITEM_ACTION,
-  REDO_ITEM_ACTION
+  UPDATE_ALL_ITEMS
 } from "../constants";
 
 export default function(state = {}, action) {
-  const { past, present, future } = state;
+
+  if(action.type === UPDATE_ALL_ITEMS){
+    return action.items
+  }
 
   if (action.type === ADD_NEW_ITEM) {
-    return {
-      past: [present, ...past],
-      present: [...present, action.item],
-      future
-    };
+    return [...state, action.item];
   }
+
   if (action.type === REMOVE_ITEM) {
-    return {
-      past: [...present, ...past],
-      present: present.filter(item => item.id !== action.id),
-      future
-    };
+    return state.filter(item => item.id !== action.id);
   }
+
   if (action.type === TOGGLE_ITEM) {
-    return {
-      past: [present, ...past],
-      present: present.map(item => {
-        if (item.id === action.id) return { ...item, packed: !item.packed };
+    return state.map(item => {
+        if (item.id === action.item.id) return { ...action.item };
         return item;
-      }),
-      future
-    };
-  }
+  })
+}
   if (action.type === MARK_ALL_AS_UNPACKED) {
-    return {
-      past: [present, ...past],
-      present: present.map(item => {
-        return { ...item, packed: false };
-      }),
-      future
-    };
+    return state.map(item => {
+      return { ...item, packed: false  };
+    });
   }
 
-  if (action.type === UNDO_ITEM_ACTION) {
-    if (!past.length) return state;
-    const newFuture = [present, ...future];
-    const [newPresent, ...newPast] = past;
-    return {
-      past: newPast,
-      present: newPresent,
-      future: newFuture
-    };
-  }
 
-  if (action.type === REDO_ITEM_ACTION) {
-    if (!future.length) return state;
-    const [newPresent, ...newFuture] = future;
-    const newPast = [present, ...past];
-    return {
-      past: newPast,
-      present: newPresent,
-      future: newFuture
-    };
-  }
   return state;
 }

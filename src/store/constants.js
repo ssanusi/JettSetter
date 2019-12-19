@@ -7,6 +7,6 @@ export const ADD_NEW_ITEM = "ADD_NEW_ITEM";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const TOGGLE_ITEM = "TOGGLE_ITEM";
 export const MARK_ALL_AS_UNPACKED = "MARK_ALL_AS_UNPACKED";
-export const UNDO_ITEM_ACTION = "UNDO_ITEM_ACTION";
-export const REDO_ITEM_ACTION = "REDO_ITEM_ACTION";
+export const UPDATE_ALL_ITEMS = "UPDATE_ALL_ITEMS";
+export const RESET_NEW_INPUT = "RESET_NEW_INPUT";
 

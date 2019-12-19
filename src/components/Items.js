@@ -14,7 +14,7 @@ class Items extends Component {
         {items.map(item => (
           <Item
             key={item.id}
-            onToggle={() => onCheckOff(item.id)}
+            onToggle={() => onCheckOff(item)}
             onRemove={() => onRemove(item.id)}
             item={item}
           />

@@ -8,7 +8,6 @@ export default function(
   action
 ) {
   if (action.type === UPDATE_PACKED_ITEMS_FILTER) {
-    console.log(action)
     return { ...state, packedItemsFilter: action.text };
   }
   if (action.type === UPDATE_UNPACKED_ITEMS_FILTER) {
