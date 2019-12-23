@@ -5,6 +5,7 @@ import {
   TOGGLE_ITEM,
   MARK_ALL_AS_UNPACKED,
   UPDATE_ALL_ITEMS,
+  FETCH_ALL_ITEMS
 } from "../constants";
 import { resetNewInput } from "./newItemAction";
 
@@ -19,7 +20,7 @@ export const addItem = value => {
         type: ADD_NEW_ITEM,
         item
       });
-      dispatch(resetNewInput())
+      dispatch(resetNewInput());
     });
   };
 };
@@ -41,7 +42,7 @@ export const toggleItem = item => {
     Api.update(updateItem).then(() => {
       dispatch({
         type: TOGGLE_ITEM,
-        item:updateItem
+        item: updateItem
       });
     });
   };
@@ -57,14 +58,12 @@ export const markAllAsUnpacked = () => {
   };
 };
 
-export const getAllItems = () => {
-  return dispatch => {
-    Api.getAll().then(items => {
-      dispatch({
-        type: UPDATE_ALL_ITEMS,
-        items
-      });
-    });
-  };
-};
+export const updateAllItems = items => ({
+  type: UPDATE_ALL_ITEMS,
+  items
+});
 
+
+export const fetchAllItems = () =>({
+  type : FETCH_ALL_ITEMS
+})
