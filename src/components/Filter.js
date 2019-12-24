@@ -4,6 +4,7 @@ import './Filter.css';
 
 class Filter extends Component {
   handleChange = event => {
+    console.log(this.props)
     const { onChange } = this.props;
     const value = event.target.value;
     onChange(value);

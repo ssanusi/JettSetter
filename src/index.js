@@ -1,8 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "mobx-react";
+import ItemList from "./models/itemList";
+import Application from "./components/Application";
 
-import Application from './components/Application';
+import "./index.css";
 
-import './index.css';
+const itemList = new ItemList();
 
-ReactDOM.render(<Application />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider itemList={itemList}>
+    <Application />
+  </Provider>,
+  document.getElementById("root")
+);

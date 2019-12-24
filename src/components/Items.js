@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import Item from './Item';
-import Filter from './Filter';
 
 class Items extends Component {
-  state = {
-    // What state does this component have?
-  };
-
-  updateSearchTerm = searchTerm => {};
-
+  
   render() {
     const { title, items, onRemove, onToggle } = this.props;
     return (
@@ -16,13 +10,8 @@ class Items extends Component {
         <h2>
           {title} ({items.length})
         </h2>
-        <Filter searchTerm={''} onChange={this.updateSearchTerm} />
-        {items
-          .filter(item =>
-            // Hmm… this needs some work.
-            item.value.toLowerCase().includes(''.toLowerCase()),
-          )
-          .map(item => (
+        {this.props.children}
+        {items.map(item => (
             <Item
               key={item.id}
               onToggle={onToggle}
